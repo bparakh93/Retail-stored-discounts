@@ -1,0 +1,233 @@
+{
+	"info": {
+		"_postman_id": "5d630049-f682-4fea-bec9-4b561656c396",
+		"name": "Retail store discounts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add products to inventory",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productName\":\"Shirt\",\r\n    \"category\":\"Apparels\",\r\n    \"price\": 250\r\n}\r\n\r\n/*     Other input samples    \r\n{\r\n    \"productName\":\"Park Avenue Deo\",\r\n    \"category\":\"Personal Care\",\r\n    \"price\": 150.0\r\n}\r\n\r\n{\r\n    \"productName\":\"Sugar\",\r\n    \"category\":\"Groceries\",\r\n    \"price\": 40.0\r\n}\r\n\r\n{\r\n    \"productName\":\"Salt\",\r\n    \"category\":\"Groceries\",\r\n    \"price\": 20.0\r\n}\r\n\r\n{\r\n    \"productName\":\"Shirt\",\r\n    \"category\":\"Apparels\",\r\n    \"price\": 249.99\r\n}\r\n*/",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080\\products\\product",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add customer to retail store",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Sarah\",\r\n    \"registrationDate\": \"10-06-2020\",\r\n    \"customerType\": \"OTHERS\",\r\n    \"employee\" : null,\r\n    \"mobileNumber\": 7891234560\r\n}\r\n\r\n/*     Other sample customers    \r\n{\r\n    \"name\": \"John\",\r\n    \"registrationDate\": \"05-06-2022\",\r\n    \"customerType\": \"EMPLOYEE\",\r\n    \"employee\" : {\r\n        \"name\":\"John\",\r\n        \"dateOfJoining\":\"05-06-2022\",\r\n        \"isActive\":true\r\n    },\r\n    \"mobileNumber\": 1234567890\r\n}\r\n\r\n{\r\n    \"name\": \"Sarah\",\r\n    \"registrationDate\": \"10-04-2023\",\r\n    \"customerType\": \"AFFILIATE\",\r\n    \"employee\" null,\r\n    \"mobileNumber\": 7894561230\r\n}\r\n\r\n\r\n{\r\n    \"name\": \"Kevin\",\r\n    \"registrationDate\": \"10-06-2020\",\r\n    \"customerType\": \"OTHERS\",\r\n    \"employee\" : null,\r\n    \"mobileNumber\": 4561237890\r\n}\r\n\r\n*/",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080\\customers\\customer",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customers",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get List of all customers in store",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"empId\": \"1\",\r\n    \"name\": \"Bhushan\",\r\n    \"dateOfJoining\": \"2020-03-12\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080\\customers",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get list of all products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080\\products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create cart of customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/carts/cart?customerId=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carts",
+						"cart"
+					],
+					"query": [
+						{
+							"key": "customerId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add product to cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/carts/1/products?productId=1&quantity=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carts",
+						"1",
+						"products"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "1"
+						},
+						{
+							"key": "quantity",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get cart total amount",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/carts/cart/1/total",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carts",
+						"cart",
+						"1",
+						"total"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get net payable amount after applying discounts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080\\carts\\cart\\1\\netPayable",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carts",
+						"cart",
+						"1",
+						"netPayable"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get cart details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080\\carts\\cart\\1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carts",
+						"cart",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
